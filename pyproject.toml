@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fe-openedx-alerts"
-version = "0.0.1"
+version = "0.0.2"
 description = ""
 authors = ["Fernando Espíndola <fer.esp@gmail.com>"]
 readme = "README.md"
