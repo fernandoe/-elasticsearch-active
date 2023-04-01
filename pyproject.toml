@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "elasticsearch-active"
+name = "fe-openedx-alerts"
 version = "0.0.1"
 description = ""
 authors = ["Fernando Espíndola <fer.esp@gmail.com>"]
 readme = "README.md"
-packages = [{include = "elasticsearch_active"}]
+packages = [{include = "fe_openedx_alerts"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"

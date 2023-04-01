@@ -1,6 +1,6 @@
-# elasticsearch-active
+# fe-openedx-alerts
 
-A simple python library to verify if the elasticsearch service is active
+A command line tool that send alerts if any Open edX service failasticsearch service is active
 
 
 
