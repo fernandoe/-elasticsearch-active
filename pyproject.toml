@@ -8,7 +8,6 @@ packages = [{include = "fe_openedx_alerts"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-twilio = "^7.17.0"
 
 
 [build-system]
