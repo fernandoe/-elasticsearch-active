@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "elasticsearch-active"
+version = "0.1.0"
+description = ""
+authors = ["Fernando Espíndola <fer.esp@gmail.com>"]
+readme = "README.md"
+packages = [{include = "elasticsearch_active"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
