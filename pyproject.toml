@@ -10,6 +10,8 @@ packages = [{include = "fe_openedx_alerts"}]
 python = "^3.9"
 requests = "^2.28.2"
 
+[tool.poetry.scripts]
+meu-script = 'es_status:main'
 
 [build-system]
 requires = ["poetry-core"]

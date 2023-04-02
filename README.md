@@ -26,16 +26,5 @@ export PATH=/home/ubuntu/.pyenv/bin:$PATH
 pyenv install 3.9.16
 pyenv global 3.9.16
 
-
- 1956  export PATH:=$PATH:/home/ubuntu/.pyenv/bin
- 1957  export PATH=$PATH:/home/ubuntu/.pyenv/bin
- 1958  echo $PATH
- 1959  pyenv versions
- 1960  pyenv global 3.9.16
- 1961  pip install twilio==7.17.10
- 1962  pip install twilio==7.17.0
- 1963  pip install twilio
- 1964  history
-ubuntu@ip-172-31-31-185:~/.pyenv/bin$ ex
-
+/home/ubuntu/.pyenv/versions/3.9.16/bin/pip3 install fe-openedx-alerts
 ```

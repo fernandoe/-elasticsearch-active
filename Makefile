@@ -2,8 +2,6 @@
 # poetry install
 # poetry run nome_do_comando
 # poetry build
-# poetry publish
-# poetry publish --build
 
 poetry-publish:
 	poetry publish --build
