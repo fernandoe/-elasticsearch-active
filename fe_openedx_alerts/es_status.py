@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 import os
-from twilio.rest import Client
+import requests
 
 account_sid = os.environ['TWILIO_ACCOUNT_SID']
 auth_token = os.environ['TWILIO_AUTH_TOKEN']
 whatsapp_number = os.environ['TWILIO_WHATSAPP_NUMBER']
 my_number = os.environ['MY_NUMBER']
+
+URL = f"https://api.twilio.com/2010-04-01/Accounts/{account_sid}/Messages.json"
+
 
 def get_current_status(fixed_str=None):
     if fixed_str == 'ok':
@@ -21,15 +24,19 @@ def execute():
     output = get_current_status('ko')
     print(output)
     if 'Active: active (running)' not in output:
-        client = Client(account_sid, auth_token)
+        data = {
+            "Body": "ATENÇÃO: O serviço do Elastic Search parou de funcionar!",
+            "From": f"{whatsapp_number}",
+            "To": f"{my_number}"
+        }
+        auth = (account_sid, auth_token)
+        response = requests.post(URL, data=data, auth=auth)
 
-        message = client.messages.create(
-            body="ATENÇÃO: O serviço do Elastic Search parou de funcionar!",
-            from_=f"{whatsapp_number}",
-            to=f"{my_number}"
-        )
-        print(f"Mensagem enviada com sucesso! SID: {message.sid}")
-
+        if response.status_code == 201:
+            print("Mensagem enviada com sucesso!")
+            print(f"response: {response.text}")
+        else:
+            print(f"Erro ao enviar mensagem: {response.text}")
 
 if __name__ == '__main__':
     execute()
