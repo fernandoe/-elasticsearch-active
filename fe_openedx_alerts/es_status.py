@@ -20,7 +20,7 @@ def get_current_status(fixed_str=None):
     return ''
 
 
-def execute():
+def main():
     output = get_current_status('ko')
     print(output)
     if 'Active: active (running)' not in output:
@@ -39,5 +39,5 @@ def execute():
             print(f"Erro ao enviar mensagem: {response.text}")
 
 if __name__ == '__main__':
-    execute()
+    main()
 

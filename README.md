@@ -27,4 +27,8 @@ pyenv install 3.9.16
 pyenv global 3.9.16
 
 /home/ubuntu/.pyenv/versions/3.9.16/bin/pip3 install fe-openedx-alerts
+
+# How to execute the script
+/home/ubuntu/.pyenv/versions/3.9.16/bin/python /home/ubuntu/.pyenv/versions/3.9.16/lib/python3.9/site-packages/fe_openedx_alerts/es_status.py
+
 ```
