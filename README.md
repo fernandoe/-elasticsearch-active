@@ -9,9 +9,13 @@ A command line tool that send alerts if any Open edX service failasticsearch ser
 Python: 3.9.16
 
 
+
 ## Poetry Configuration
 
 ```bash
+# https://pypi.org/
+poetry config pypi-token.pypi $PYPI_TOKEN
+
 # https://test.pypi.org/
 poetry config repositories.testpypi https://test.pypi.org/legacy/
 poetry config pypi-token.testpypi PYPI_TEST_TOKEN

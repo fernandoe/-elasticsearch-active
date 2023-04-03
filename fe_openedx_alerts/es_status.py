@@ -1,31 +1,27 @@
 #!/usr/bin/env python
 import os
 import requests
+import subprocess
 
 account_sid = os.environ['TWILIO_ACCOUNT_SID']
 auth_token = os.environ['TWILIO_AUTH_TOKEN']
 whatsapp_number = os.environ['TWILIO_WHATSAPP_NUMBER']
 my_number = os.environ['MY_NUMBER']
+server_name = os.environ['SERVER_NAME']
 
 URL = f"https://api.twilio.com/2010-04-01/Accounts/{account_sid}/Messages.json"
 
 
 def get_current_status(fixed_str=None):
-    if fixed_str == 'ok':
-        with open("./es-status-ok.txt", "r") as result:
-            return result.read()
-    elif fixed_str == 'ko':
-        with open("./es-status-not-ok.txt", "r") as result:
-            return result.read()
-    return ''
+    output = subprocess.run(['service', 'elasticsearch', 'status'], capture_output=True, text=True)
+    return output.stdout
 
 
 def main():
     output = get_current_status('ko')
-    print(output)
     if 'Active: active (running)' not in output:
         data = {
-            "Body": "ATENÇÃO: O serviço do Elastic Search parou de funcionar!",
+            "Body": f"ATENÇÃO: O serviço do Elastic Search parou de funcionar! Servidor: {server_name}",
             "From": f"{whatsapp_number}",
             "To": f"{my_number}"
         }
@@ -37,6 +33,9 @@ def main():
             print(f"response: {response.text}")
         else:
             print(f"Erro ao enviar mensagem: {response.text}")
+    else:
+        print("All good! :D")
+
 
 if __name__ == '__main__':
     main()
