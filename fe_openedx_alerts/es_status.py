@@ -2,6 +2,7 @@
 import os
 import requests
 import subprocess
+from datetime import datetime
 
 account_sid = os.environ['TWILIO_ACCOUNT_SID']
 auth_token = os.environ['TWILIO_AUTH_TOKEN']
@@ -13,7 +14,7 @@ URL = f"https://api.twilio.com/2010-04-01/Accounts/{account_sid}/Messages.json"
 
 
 def get_current_status(fixed_str=None):
-    output = subprocess.run(['service', 'elasticsearch', 'status'], capture_output=True, text=True)
+    output = subprocess.run(['/usr/sbin/service', 'elasticsearch', 'status'], capture_output=True, text=True)
     return output.stdout
 
 
@@ -34,7 +35,7 @@ def main():
         else:
             print(f"Erro ao enviar mensagem: {response.text}")
     else:
-        print("All good! :D")
+        print(f"{datetime.now()} => All good! :D")
 
 
 if __name__ == '__main__':
